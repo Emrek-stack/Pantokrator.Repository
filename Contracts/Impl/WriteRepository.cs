@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Frost.Data.Sql.Contracts;
 using Microsoft.EntityFrameworkCore;
 
-namespace Frost.Data.Sql.Impl
+namespace Pantokrator.Data.Sql.Contracts.Impl
 {
     public abstract class WriteRepository<TEntity, TContext> : IEfWriteRepository<TEntity>
         where TEntity : class, new()

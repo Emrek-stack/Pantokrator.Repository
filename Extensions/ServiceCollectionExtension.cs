@@ -1,8 +1,8 @@
-using Frost.Data.Sql.Contracts;
-using Frost.Data.Sql.Impl;
 using Microsoft.Extensions.DependencyInjection;
+using Pantokrator.Data.Sql.Contracts;
+using Pantokrator.Data.Sql.Contracts.Impl;
 
-namespace Frost.Data.Sql.Extensions {
+namespace Pantokrator.Data.Sql.Extensions {
     public static class ServiceCollectionExtension {
         public static IServiceCollection AddRepositoryModule (this IServiceCollection services) {
             services                

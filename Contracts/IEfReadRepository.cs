@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Frost.Data.Sql.Extensions;
+using Pantokrator.Data.Sql.Extensions;
 
-namespace Frost.Data.Sql.Contracts
+namespace Pantokrator.Data.Sql.Contracts
 {
     public interface IEfReadRepository<TEntity> where TEntity : class, new()
     {

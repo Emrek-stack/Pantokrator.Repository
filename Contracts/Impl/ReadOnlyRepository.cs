@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
-using Frost.Data.Sql.Contracts;
-using Frost.Data.Sql.Extensions;
+using Pantokrator.Data.Sql.Extensions;
 
-namespace Frost.Data.Sql.Impl
+namespace Pantokrator.Data.Sql.Contracts.Impl
 {
     public abstract class ReadOnlyRepository : IReadonlyRepository
     {

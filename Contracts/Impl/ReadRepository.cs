@@ -4,11 +4,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Frost.Data.Sql.Contracts;
-using Frost.Data.Sql.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Pantokrator.Data.Sql.Extensions;
 
-namespace Frost.Data.Sql.Impl
+namespace Pantokrator.Data.Sql.Contracts.Impl
 {
     public abstract class ReadRepository<TEntity, TContext> : IEfReadRepository<TEntity>
         where TEntity : class , new()

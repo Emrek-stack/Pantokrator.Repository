@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Frost.Data.Sql.Contracts
+namespace Pantokrator.Data.Sql.Contracts
 {
     public interface IEfWriteRepository<TEntity> where TEntity : class, new()
 

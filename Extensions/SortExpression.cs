@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Linq.Expressions;
 
-namespace Frost.Data.Sql.Extensions
+namespace Pantokrator.Data.Sql.Extensions
 {
     public class SortExpression<TEntity> where TEntity : class
     {

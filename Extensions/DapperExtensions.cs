@@ -4,7 +4,7 @@ using System.Data;
 using System.Threading.Tasks;
 using Dapper;
 
-namespace Frost.Data.Sql.Extensions
+namespace Pantokrator.Data.Sql.Extensions
 {
     public static class DapperExtensions
     {

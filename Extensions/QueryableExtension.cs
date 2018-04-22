@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Frost.Data.Sql.Extensions
+namespace Pantokrator.Data.Sql.Extensions
 {
     public static class QueryableExtension
     {
