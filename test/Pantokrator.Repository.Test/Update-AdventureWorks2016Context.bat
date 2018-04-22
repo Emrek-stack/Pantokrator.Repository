@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold "Data Source=localhost;Initial Catalog=AdventureWorks2016;Persist Security Info=True;User ID=sa;Password=123" Microsoft.EntityFrameworkCore.SqlServer -c AdventureWorks -o Context\AdventureWorks --framework netcoreapp2.0 --force
