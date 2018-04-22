@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Frost.Data.Sql.Impl
 {
     public abstract class WriteRepository<TEntity, TContext> : IEfWriteRepository<TEntity>
-        where TEntity : BaseEntity
+        where TEntity : class, new()
         where TContext : DbContext, IDisposable
     {
         private readonly TContext _context;
@@ -18,8 +18,6 @@ namespace Frost.Data.Sql.Impl
         {
             _context = context;
             _entities = context.Set<TEntity>();
-            //if (!(unitOfWork is EfUnitOfWork<TContext> efUnitOfWork)) throw new Exception("Must be EfUnitOfWork"); // TODO: Typed exception
-            //_entities = efUnitOfWork.GetDbSet<TEntity>();
         }
         #endregion
 
@@ -36,7 +34,7 @@ namespace Frost.Data.Sql.Impl
         #endregion
 
         #region Sync Methods              
-        public void Insert(TEntity entity)
+        public TEntity Insert(TEntity entity)
         {
             if (entity == null)
             {
@@ -44,9 +42,10 @@ namespace Frost.Data.Sql.Impl
             }
             _entities.Add(entity);
             SaveChanges();
+            return entity;
         }
 
-        public void Update(TEntity entity)
+        public TEntity Update(TEntity entity)
         {
             if (entity == null)
             {
@@ -55,9 +54,11 @@ namespace Frost.Data.Sql.Impl
             _entities.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
             SaveChanges();
+
+            return entity;
         }
 
-        public void Delete(TEntity entity)
+        public TEntity Delete(TEntity entity)
         {
             if (entity == null)
             {
@@ -65,8 +66,8 @@ namespace Frost.Data.Sql.Impl
             }
             _entities.Attach(entity);
             _context.Entry(entity).State = EntityState.Deleted;
-            //_entities.Remove(entity);
             SaveChanges();
+            return entity;
         }
         #endregion
 
@@ -100,7 +101,6 @@ namespace Frost.Data.Sql.Impl
             }
             _entities.Attach(entity);
             _context.Entry(entity).State = EntityState.Deleted;
-            //_entities.Remove(entity);
             await SaveChangesAsync();
         }
         #endregion

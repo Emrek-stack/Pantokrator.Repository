@@ -6,7 +6,7 @@ using Frost.Data.Sql.Extensions;
 
 namespace Frost.Data.Sql.Contracts
 {
-    public interface IEfReadRepository<TEntity> where TEntity : BaseEntity
+    public interface IEfReadRepository<TEntity> where TEntity : class, new()
     {
         #region Sync Methods
         IEnumerable<TEntity> GetAll();
@@ -26,7 +26,7 @@ namespace Frost.Data.Sql.Contracts
             Expression<Func<TEntity, bool>> predicate,
             string[] includePaths = null,
             int? page = 0, int? pageSize = null,
-            params SortExpression<TEntity>[] sortExpressions);        
+            params SortExpression<TEntity>[] sortExpressions);
         #endregion
     }
 }

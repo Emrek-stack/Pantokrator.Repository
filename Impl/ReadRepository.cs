@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Frost.Data.Sql.Impl
 {
     public abstract class ReadRepository<TEntity, TContext> : IEfReadRepository<TEntity>
-        where TEntity : BaseEntity
+        where TEntity : class , new()
         where TContext : DbContext
     {
         private readonly TContext _context;
