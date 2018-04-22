@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
+using System.Threading;
 using System.Threading.Tasks;
 using Dapper;
 
@@ -8,19 +10,16 @@ namespace Pantokrator.Repository.Extensions
 {
     public static class DapperExtensions
     {
+
+
+
+
+        #region Sync Methods
         private static void OpenConnection(this IDbConnection connection)
         {
             if (connection.State != ConnectionState.Open)
                 connection.Open();
         }
-
-
-        //public static IEnumerable<TRes> ExecSql<TRes>(this IDbConnection connection, string sqlCommand, dynamic parameters)
-        //{
-        //    return connection.ExecuteInside<TRes>(sqlCommand, (object)parameters, CommandType.Text);
-        //}
-
-        #region Sync Methods
         private static void CloseConnection(this IDbConnection connection)
         {
             if (connection.State != ConnectionState.Closed)
@@ -90,6 +89,14 @@ namespace Pantokrator.Repository.Extensions
         public static async Task<IEnumerable<TRes>> ExecStoredProcedureAsync<TRes>(this IDbConnection connection, string procedureName, dynamic parameters)
         {
             return await connection.ExecuteInsideAsync<TRes>(procedureName, (object)parameters, CommandType.StoredProcedure);
+        }
+
+        public static async Task<SqlMapper.GridReader> MultipleQueryAsync(this IDbConnection connection,
+            string procedureName, dynamic parameters)
+        {
+            return await connection.ConnectionActionAsync(() =>
+                connection.QueryMultipleAsync(procedureName, (object)parameters, null, null,
+                    CommandType.StoredProcedure));
         }
         #endregion
 

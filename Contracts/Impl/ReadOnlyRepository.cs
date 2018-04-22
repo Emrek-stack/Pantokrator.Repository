@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using System.Threading.Tasks;
 using Pantokrator.Repository.Extensions;
 
@@ -45,6 +46,8 @@ namespace Pantokrator.Repository.Contracts.Impl
         {
             return await DapperExtensions.ExecNonQuerySqlAsync(_connection, sqlCommand, parameters);
         }
+
+
         #endregion        
     }
 }
