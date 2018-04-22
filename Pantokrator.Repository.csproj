@@ -3,6 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Frost.Data.Sql</AssemblyName>
+    <PackageId>Pantokrator.Repository</PackageId>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Emre Karahan</Authors>
+    <Company>Pantokrator Co.</Company>
+    <Product>Pantokrator.Repository</Product>
+    <Copyright>Emre Karahan</Copyright>
+    <Description>Entity Framework Core &amp; Dapper Hybrid Repository</Description>
   </PropertyGroup>
 
   <ItemGroup>

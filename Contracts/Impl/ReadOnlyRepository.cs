@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Data;
 using System.Threading.Tasks;
-using Pantokrator.Data.Sql.Extensions;
+using Pantokrator.Repository.Extensions;
 
-namespace Pantokrator.Data.Sql.Contracts.Impl
+namespace Pantokrator.Repository.Contracts.Impl
 {
     public abstract class ReadOnlyRepository : IReadonlyRepository
     {

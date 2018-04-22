@@ -1,8 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
-using Pantokrator.Data.Sql.Contracts;
-using Pantokrator.Data.Sql.Contracts.Impl;
+using Pantokrator.Repository.Contracts;
+using Pantokrator.Repository.Contracts.Impl;
 
-namespace Pantokrator.Data.Sql.Extensions {
+namespace Pantokrator.Repository.Extensions {
     public static class ServiceCollectionExtension {
         public static IServiceCollection AddRepositoryModule (this IServiceCollection services) {
             services                

@@ -4,7 +4,7 @@ using System.Data;
 using System.Threading.Tasks;
 using Dapper;
 
-namespace Pantokrator.Data.Sql.Extensions
+namespace Pantokrator.Repository.Extensions
 {
     public static class DapperExtensions
     {

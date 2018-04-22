@@ -5,9 +5,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Pantokrator.Data.Sql.Extensions;
+using Pantokrator.Repository.Extensions;
 
-namespace Pantokrator.Data.Sql.Contracts.Impl
+namespace Pantokrator.Repository.Contracts.Impl
 {
     public abstract class ReadRepository<TEntity, TContext> : IEfReadRepository<TEntity>
         where TEntity : class , new()
@@ -80,26 +80,11 @@ namespace Pantokrator.Data.Sql.Contracts.Impl
                 {
                     if (i == 0)
                     {
-                        if (sortExpressions[i].SortDirection == ListSortDirection.Ascending)
-                        {
-                            orderedQuery = query.OrderBy(sortExpressions[i].SortBy);
-                        }
-                        else
-                        {
-                            orderedQuery = query.OrderByDescending(sortExpressions[i].SortBy);
-                        }
+                        orderedQuery = sortExpressions[i].SortDirection == ListSortDirection.Ascending ? query.OrderBy(sortExpressions[i].SortBy) : query.OrderByDescending(sortExpressions[i].SortBy);
                     }
                     else
                     {
-                        if (sortExpressions[i].SortDirection == ListSortDirection.Ascending)
-                        {
-                            orderedQuery = orderedQuery.ThenBy(sortExpressions[i].SortBy);
-                        }
-                        else
-                        {
-                            orderedQuery = orderedQuery.ThenByDescending(sortExpressions[i].SortBy);
-                        }
-
+                        orderedQuery = sortExpressions[i].SortDirection == ListSortDirection.Ascending ? orderedQuery.ThenBy(sortExpressions[i].SortBy) : orderedQuery.ThenByDescending(sortExpressions[i].SortBy);
                     }
                 }
 

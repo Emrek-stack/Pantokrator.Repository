@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Pantokrator.Data.Sql.Contracts {
+namespace Pantokrator.Repository.Contracts {
     public interface IReadonlyRepository {
         #region Sync Methods
         int ExecNonQueryStoredProc (string sqlCommand, dynamic parameters);

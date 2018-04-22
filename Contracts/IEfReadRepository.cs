@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Pantokrator.Data.Sql.Extensions;
+using Pantokrator.Repository.Extensions;
 
-namespace Pantokrator.Data.Sql.Contracts
+namespace Pantokrator.Repository.Contracts
 {
     public interface IEfReadRepository<TEntity> where TEntity : class, new()
     {

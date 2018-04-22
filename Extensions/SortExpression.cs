@@ -1,8 +1,7 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Linq.Expressions;
 
-namespace Pantokrator.Data.Sql.Extensions
+namespace Pantokrator.Repository.Extensions
 {
     public class SortExpression<TEntity> where TEntity : class
     {

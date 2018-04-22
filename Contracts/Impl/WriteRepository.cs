@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace Pantokrator.Data.Sql.Contracts.Impl
+namespace Pantokrator.Repository.Contracts.Impl
 {
     public abstract class WriteRepository<TEntity, TContext> : IEfWriteRepository<TEntity>
         where TEntity : class, new()
