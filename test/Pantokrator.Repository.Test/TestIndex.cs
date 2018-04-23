@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Pantokrator.Repository.Test.Context.AdventureWorks;
 using Pantokrator.Repository.Test.Repo;
 
 namespace Pantokrator.Repository.Test
@@ -21,6 +23,11 @@ namespace Pantokrator.Repository.Test
         private void Test()
         {
             var data = _empRepository.GetAll().ToList();
+
+            foreach (Employee employee in data)
+            {
+                Console.WriteLine(employee.JobTitle);
+            }
         }
     }
 }
