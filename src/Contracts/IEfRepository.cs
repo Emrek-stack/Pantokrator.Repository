@@ -6,9 +6,14 @@ using Pantokrator.Repository.Extensions;
 
 namespace Pantokrator.Repository.Contracts
 {
-    public interface IEfReadRepository<TEntity> where TEntity : class, new()
+    public interface IEfRepository<TEntity> where TEntity : class
     {
         #region Sync Methods
+
+        TEntity Insert(TEntity entity);
+        TEntity Update(TEntity entity);
+        TEntity Delete(TEntity entity);
+
         IEnumerable<TEntity> GetAll();
         TEntity GetBy(Func<TEntity, bool> predicate);
         IList<TEntity> GetAllBy(Func<TEntity, bool> predicate);
@@ -20,6 +25,11 @@ namespace Pantokrator.Repository.Contracts
         #endregion
 
         #region Async Methods
+
+        Task InsertAsync(TEntity entity);
+        Task UpdateAsync(TEntity entity);
+        Task DeleteAsync(TEntity entity);
+
         Task<TEntity> GetByAsync(Expression<Func<TEntity, bool>> predicate);
         Task<IReadOnlyList<TEntity>> GetAllByAsync(Expression<Func<TEntity, bool>> predicate);
         Task<IReadOnlyList<TEntity>> GetAllByAsync(

@@ -2,13 +2,18 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Pantokrator.Repository.Contracts;
+using Pantokrator.Repository.Contracts.Impl;
 using Pantokrator.Repository.Extensions;
-using Pantokrator.Repository.Test;
+using Pantokrator.Repository.Test.Context.AdventureWorks;
+using Pantokrator.Repository.Test.Repo;
+using Pantokrator.Repository.Test.Repo.Impl;
 
-namespace Boyner.Consoles.Test
+namespace Pantokrator.Repository.Test
 {
     public static class AppStartup
     {
@@ -39,19 +44,25 @@ namespace Boyner.Consoles.Test
             if (ServiceProvider != null) return;
 
             var services = new ServiceCollection();
-      
+
             //Register Ecomm Connection
-            IDbConnection connection = new SqlConnection(Configuration.GetConnectionString("Modules:EcommDb"));
+            IDbConnection connection = new SqlConnection(Configuration.GetConnectionString("Modules:AdventureWorks"));
             services.AddScoped(p => connection);
+
+
+            services.AddDbContext<AdventureWorks>((options) =>
+                {
+                    options.UseSqlServer(Configuration.GetConnectionString("Modules:AdventureWorks"));
+                });
 
             // Add functionality to inject IOptions<T>
             services.AddOptions();
 
-           // // Add our Config object so it can be injected
-           //services.Configure<AppSettings>(Configuration.GetSection("Settings"));
+            // // Add our Config object so it can be injected
+            //services.Configure<AppSettings>(Configuration.GetSection("Settings"));
 
             services.AddLogging(loggingBuilder =>
-                loggingBuilder                    
+                loggingBuilder
                     .AddDebug()
                     .AddConsole());
 
@@ -61,6 +72,10 @@ namespace Boyner.Consoles.Test
 
             //Register Data Module
             services.AddRepositoryModule();
+
+
+            //register local repo
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
             services.AddScoped<TestIndex>();
 

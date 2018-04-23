@@ -1,4 +1,7 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection;
+using Pantokrator.Repository.Contracts;
+using Pantokrator.Repository.Test.Context.AdventureWorks;
 
 namespace Pantokrator.Repository.Test
 {
@@ -6,7 +9,17 @@ namespace Pantokrator.Repository.Test
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            AppStartup.Run();
+            Console.WriteLine("Press any key to start...");
+
+            
+
+            var testIndex = AppStartup.ServiceProvider.GetService<TestIndex>();
+            testIndex.Run();
+       
+            
+
+            Console.ReadLine();
         }
     }
 }

@@ -1,11 +1,14 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Pantokrator.Repository.Test.Context.AdventureWorks
 {
-    public partial class AdventureWorks : DbContext
+    public class AdventureWorks : DbContext
     {
+        public AdventureWorks(DbContextOptions<AdventureWorks> options)
+            : base(options)
+        {
+        }
+
         public virtual DbSet<Address> Address { get; set; }
         public virtual DbSet<AddressType> AddressType { get; set; }
         public virtual DbSet<AwbuildVersion> AwbuildVersion { get; set; }
@@ -79,14 +82,14 @@ namespace Pantokrator.Repository.Test.Context.AdventureWorks
         // Unable to generate entity type for table 'Production.ProductDocument'. Please see the warning messages.
         // Unable to generate entity type for table 'Production.Document'. Please see the warning messages.
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"Data Source=localhost;Initial Catalog=AdventureWorks2016;Persist Security Info=True;User ID=sa;Password=be02062012@A");
-            }
-        }
+//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//        {
+//            if (!optionsBuilder.IsConfigured)
+//            {
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+//                optionsBuilder.UseSqlServer(@"Data Source=localhost;Initial Catalog=AdventureWorks2016;Persist Security Info=True;User ID=sa;Password=be02062012@A");
+//            }
+//        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

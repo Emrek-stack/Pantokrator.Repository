@@ -5,14 +5,14 @@ using Pantokrator.Repository.Extensions;
 
 namespace Pantokrator.Repository.Contracts.Impl
 {
-    public abstract class ReadOnlyRepository : IReadonlyRepository
+    public class DapperRepository : IDapperRepository
     {
         #region Fields
         private readonly IDbConnection _connection;
         #endregion
 
         #region ctor
-        protected ReadOnlyRepository(IDbConnection connection)
+        protected DapperRepository(IDbConnection connection)
         {
             _connection = connection;
         }

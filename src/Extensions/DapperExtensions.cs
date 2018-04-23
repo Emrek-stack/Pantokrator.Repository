@@ -10,10 +10,6 @@ namespace Pantokrator.Repository.Extensions
 {
     public static class DapperExtensions
     {
-
-
-
-
         #region Sync Methods
         private static void OpenConnection(this IDbConnection connection)
         {
@@ -99,9 +95,6 @@ namespace Pantokrator.Repository.Extensions
                     CommandType.StoredProcedure));
         }
         #endregion
-
-
-
 
     }
 }
