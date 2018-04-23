@@ -71,10 +71,8 @@ namespace Pantokrator.Repository.Contracts.Impl
             return entity;
         }
 
-        public IEnumerable<TEntity> GetAll()
-        {
-            return _entities.AsNoTracking().AsEnumerable();
-        }
+        public IEnumerable<TEntity> GetAll() =>
+            _entities.AsNoTracking().AsEnumerable();
 
         public TEntity GetBy(Func<TEntity, bool> predicate)
         {
@@ -177,10 +175,8 @@ namespace Pantokrator.Repository.Contracts.Impl
             await SaveChangesAsync();
         }
 
-        public async Task<IReadOnlyList<TEntity>> GetAllAsync()
-        {
-            return await _entities.ToListAsync();
-        }
+        public async Task<IReadOnlyList<TEntity>> GetAllAsync() =>
+            await _entities.ToListAsync();
 
         public async Task<TEntity> GetByAsync(Expression<Func<TEntity, bool>> predicate)
         {

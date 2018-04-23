@@ -19,35 +19,29 @@ namespace Pantokrator.Repository.Contracts.Impl
         #endregion
 
         #region Sync Methods
-        public int ExecNonQueryStoredProc(string sqlCommand, dynamic parameters)
-        {
-            return DapperExtensions.ExecNonQueryStoredProc(_connection, sqlCommand, parameters);
-        }
-        public int ExecNonQuerySql(string sqlCommand, dynamic parameters)
-        {
-            return DapperExtensions.ExecNonQuerySql(_connection, sqlCommand, parameters);
-        }
-        public IEnumerable<TRes> ExecStoredProcedure<TRes>(string procedureName, dynamic parameters)
-        {
-            return DapperExtensions.ExecStoredProcedure<TRes>(_connection, procedureName, parameters);
-        }
+
+        public int ExecNonQueryStoredProc(string sqlCommand, dynamic parameters) =>
+            DapperExtensions.ExecNonQueryStoredProc(_connection, sqlCommand, parameters);
+
+        public int ExecNonQuerySql(string sqlCommand, dynamic parameters) =>
+            DapperExtensions.ExecNonQuerySql(_connection, sqlCommand, parameters);
+
+        public IEnumerable<TRes> ExecStoredProcedure<TRes>(string procedureName, dynamic parameters) =>
+            DapperExtensions.ExecStoredProcedure<TRes>(_connection, procedureName, parameters);
+
         #endregion
 
         #region Async Methods
-        public async Task<IEnumerable<TRes>> ExecStoredProcedureAsync<TRes>(string procedureName, dynamic parameters)
-        {
-            return await DapperExtensions.ExecStoredProcedureAsync<TRes>(_connection, procedureName, parameters);
-        }
-        public async Task<int> ExecNonQueryStoredProcAsync(string sqlCommand, dynamic parameters)
-        {
-            return await DapperExtensions.ExecNonQueryStoredProcAsync(_connection, sqlCommand, parameters);
-        }
-        public async Task<int> ExecNonQuerySqlAsync(string sqlCommand, dynamic parameters)
-        {
-            return await DapperExtensions.ExecNonQuerySqlAsync(_connection, sqlCommand, parameters);
-        }
 
+        public async Task<IEnumerable<TRes>> ExecStoredProcedureAsync<TRes>(string procedureName, dynamic parameters) =>
+            await DapperExtensions.ExecStoredProcedureAsync<TRes>(_connection, procedureName, parameters);
 
-        #endregion        
+        public async Task<int> ExecNonQueryStoredProcAsync(string sqlCommand, dynamic parameters) =>
+            await DapperExtensions.ExecNonQueryStoredProcAsync(_connection, sqlCommand, parameters);
+
+        public async Task<int> ExecNonQuerySqlAsync(string sqlCommand, dynamic parameters) =>
+            await DapperExtensions.ExecNonQuerySqlAsync(_connection, sqlCommand, parameters);
+        
+        #endregion
     }
 }

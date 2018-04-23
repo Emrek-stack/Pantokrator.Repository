@@ -11,8 +11,6 @@ namespace Pantokrator.Repository.Extensions
             services
                 .AddScoped(typeof(IEfRepository<>), typeof(EfRepository<,>))
                 .AddScoped<IDapperRepository, DapperRepository>();
-
-
             return services;
         }
     }
