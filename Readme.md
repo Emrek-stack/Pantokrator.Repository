@@ -1,9 +1,9 @@
-Pantokrator Hybrid Entity Framework & Dapper Repository
+#  Pantokrator Hybrid Entity Framework & Dapper Repository
 
 
-**bold**
-Usage  : 
+### **Usage  :** 
 
 //Register Data Module
+
 services.AddRepositoryModule();
 
