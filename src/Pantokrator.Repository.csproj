@@ -10,6 +10,12 @@
     <Product>Pantokrator.Repository</Product>
     <Copyright>Emre Karahan</Copyright>
     <Description>Entity Framework Core &amp; Dapper Hybrid Repository</Description>
+    <PackageProjectUrl>https://github.com/EmreKarahan/Pantokrator.Repository.git</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/EmreKarahan/Pantokrator.Repository.git</RepositoryUrl>
+    <PackageTags>dotnetcore, netcore,repository</PackageTags>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

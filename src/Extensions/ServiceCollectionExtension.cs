@@ -9,8 +9,8 @@ namespace Pantokrator.Repository.Extensions
         public static IServiceCollection AddRepositoryModule(this IServiceCollection services)
         {
             services
-                .AddScoped(typeof(IEfRepository<>), typeof(EfRepository<,>));
-                //.AddScoped<IDapperRepository, DapperRepository>();
+                .AddScoped(typeof(IEfRepository<>), typeof(EfRepository<,>))
+                .AddScoped<IDapperRepository, DapperRepository>();
 
 
             return services;
