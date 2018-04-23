@@ -74,6 +74,7 @@ namespace Pantokrator.Repository.Test
             services.AddRepositoryModule();
 
 
+
             //register local repo
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 

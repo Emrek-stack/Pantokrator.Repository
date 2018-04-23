@@ -41,9 +41,8 @@ namespace Pantokrator.Repository.Contracts.Impl
         public TEntity Insert(TEntity entity)
         {
             if (entity == null)
-            {
                 throw new ArgumentNullException("entity");
-            }
+
             _entities.Add(entity);
             SaveChanges();
             return entity;
@@ -52,9 +51,8 @@ namespace Pantokrator.Repository.Contracts.Impl
         public TEntity Update(TEntity entity)
         {
             if (entity == null)
-            {
                 throw new ArgumentNullException("entity");
-            }
+
             _entities.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
             SaveChanges();
@@ -65,9 +63,8 @@ namespace Pantokrator.Repository.Contracts.Impl
         public TEntity Delete(TEntity entity)
         {
             if (entity == null)
-            {
                 throw new ArgumentNullException("entity");
-            }
+
             _entities.Attach(entity);
             _context.Entry(entity).State = EntityState.Deleted;
             SaveChanges();
@@ -82,9 +79,7 @@ namespace Pantokrator.Repository.Contracts.Impl
         public TEntity GetBy(Func<TEntity, bool> predicate)
         {
             if (predicate == null)
-            {
                 throw new ArgumentNullException("predicate");
-            }
 
             var result = _entities.FirstOrDefault(predicate);
             return result;
@@ -93,9 +88,8 @@ namespace Pantokrator.Repository.Contracts.Impl
         public IList<TEntity> GetAllBy(Func<TEntity, bool> predicate)
         {
             if (predicate == null)
-            {
                 throw new ArgumentNullException("predicate");
-            }
+
             return _entities.Where(predicate).ToList();
         }
 
@@ -157,9 +151,8 @@ namespace Pantokrator.Repository.Contracts.Impl
         public async Task InsertAsync(TEntity entity)
         {
             if (entity == null)
-            {
                 throw new ArgumentNullException("entity");
-            }
+
             await _entities.AddAsync(entity);
             await SaveChangesAsync();
         }
@@ -167,9 +160,8 @@ namespace Pantokrator.Repository.Contracts.Impl
         public async Task UpdateAsync(TEntity entity)
         {
             if (entity == null)
-            {
                 throw new ArgumentNullException("entity");
-            }
+
             _entities.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
             await SaveChangesAsync();
@@ -178,31 +170,31 @@ namespace Pantokrator.Repository.Contracts.Impl
         public async Task DeleteAsync(TEntity entity)
         {
             if (entity == null)
-            {
                 throw new ArgumentNullException("entity");
-            }
+
             _entities.Attach(entity);
             _context.Entry(entity).State = EntityState.Deleted;
             await SaveChangesAsync();
         }
 
+        public async Task<IReadOnlyList<TEntity>> GetAllAsync()
+        {
+            return await _entities.ToListAsync();
+        }
+
         public async Task<TEntity> GetByAsync(Expression<Func<TEntity, bool>> predicate)
         {
             if (predicate == null)
-            {
                 throw new ArgumentNullException("predicate");
-            }
 
             return await _entities.FirstOrDefaultAsync(predicate);
-
         }
 
         public async Task<IReadOnlyList<TEntity>> GetAllByAsync(Expression<Func<TEntity, bool>> predicate)
         {
             if (predicate == null)
-            {
                 throw new ArgumentNullException("predicate");
-            }
+
             return await _entities.Where(predicate).ToListAsync();
         }
 

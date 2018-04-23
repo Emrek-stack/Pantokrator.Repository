@@ -30,6 +30,7 @@ namespace Pantokrator.Repository.Contracts
         Task UpdateAsync(TEntity entity);
         Task DeleteAsync(TEntity entity);
 
+        Task<IReadOnlyList<TEntity>> GetAllAsync();
         Task<TEntity> GetByAsync(Expression<Func<TEntity, bool>> predicate);
         Task<IReadOnlyList<TEntity>> GetAllByAsync(Expression<Func<TEntity, bool>> predicate);
         Task<IReadOnlyList<TEntity>> GetAllByAsync(
